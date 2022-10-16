@@ -37,10 +37,10 @@ def send_bday_message():
     bday_string = ''
     for name, age in todays_bdays:
         if age == 'NA':
-            bday_string += 'Wish {} a Happy Birthday!\n'.format(name)
+            bday_string += 'Wish <strong>{}</strong> a Happy Birthday!\n'.format(name)
         else:
-            bday_string += '{} is {} today. Wish them a Happy Birthday!\n'.format(name, age)
-    bot.sendMessage(chat_id=BOT_CHAT_ID, text=bday_string)
+            bday_string += '<strong>{}</strong> is {} today. Wish them a Happy Birthday!\n'.format(name, age)
+    bot.sendMessage(chat_id=BOT_CHAT_ID, text=bday_string, parse_mode='HTML')
 
 schedule.every().day.at(UPDATE_AT).do(send_bday_message)
 
